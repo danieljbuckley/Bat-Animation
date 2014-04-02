@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C250E255-91F8-4485-BA73-CF73B0199F7E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>particlesExample</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4BBACAB6-0629-4989-9971-4EDD5BDDB7C4</key>
+		<string>https://github.com/danieljbuckley/Bat-Animation.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>particlesExample/particlesExample.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4BBACAB6-0629-4989-9971-4EDD5BDDB7C4</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/danieljbuckley/Bat-Animation.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4BBACAB6-0629-4989-9971-4EDD5BDDB7C4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4BBACAB6-0629-4989-9971-4EDD5BDDB7C4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Bat Animation</string>
+		</dict>
+	</array>
+</dict>
+</plist>
