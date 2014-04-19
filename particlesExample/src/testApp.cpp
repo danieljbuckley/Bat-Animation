@@ -3,8 +3,8 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
-	
 	int num = 15;
+    
 	p.assign(num, demoParticle());
 	currentMode = PARTICLE_MODE_NEAREST_POINTS;
 
@@ -18,10 +18,13 @@ void testApp::resetParticles(){
 
 	//these are the attraction points used in the forth demo 
 	attractPoints.clear();
-	for(int i = 0; i < 4; i++){
+	if( currentMode == PARTICLE_MODE_NEAREST_POINTS ){
+    for(int i = 0; i < 2; i++){
 		attractPoints.push_back( ofPoint( ofMap(i, 0, 4, 100, ofGetWidth()-100) , ofRandom(100, ofGetHeight()-100) ) );
+        }
 	}
-	
+    
+    
 	attractPointsWithMovement = attractPoints;
 	
 	for(unsigned int i = 0; i < p.size(); i++){
@@ -39,12 +42,14 @@ void testApp::update(){
 	}
 	
 	//lets add a bit of movement to the attract points
+    if( currentMode == PARTICLE_MODE_NEAREST_POINTS ){
 	for(unsigned int i = 0; i < attractPointsWithMovement.size(); i++){
-		attractPointsWithMovement[i].x = ofGetMouseX() + ofSignedNoise(i * 10, ofGetElapsedTimef() * 0.7) * 12.0;
-		attractPointsWithMovement[i].y = ofGetMouseY() + ofSignedNoise(i * -10, ofGetElapsedTimef() * 0.7) * 12.0;
-        //attractPointsWithMovement[i].x = attractPoints[i].x + ofSignedNoise(i * 10, ofGetElapsedTimef() * 0.7) * 12.0;
-		//attractPointsWithMovement[i].y = attractPoints[i].y + ofSignedNoise(i * -10, ofGetElapsedTimef() * 0.7) * 12.0;
-	}	
+		//attractPointsWithMovement[i].x = ofGetMouseX() + ofSignedNoise(i * 10, ofGetElapsedTimef() * 0.7) * 12.0;
+		//attractPointsWithMovement[i].y = ofGetMouseY() + ofSignedNoise(i * -10, ofGetElapsedTimef() * 0.7) * 12.0;
+        attractPointsWithMovement[i].x = ofGetMouseX() + ofSignedNoise(i * 10, ofGetElapsedTimef() * 0.7) * 20;
+		attractPointsWithMovement[i].y = ofGetMouseY() + ofSignedNoise(i * -10, ofGetElapsedTimef() * 0.7) * 20;
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -65,30 +70,21 @@ void testApp::draw(){
 		}
 	}
 
-	ofSetColor(230);	
+	ofSetColor(0);
 	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode.", 10, 20);
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	/*if( key == '1'){
-		currentMode = PARTICLE_MODE_ATTRACT;
-		currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 		
-	}
+
 	if( key == '2'){
 		currentMode = PARTICLE_MODE_REPEL;
-		currentModeStr = "2 - PARTICLE_MODE_REPEL: repels from mouse"; 				
-	}*/
+		currentModeStr = "2 - PARTICLE_MODE_REPEL: repels from mouse";
+	}
 	if( key == '3'){
 		currentMode = PARTICLE_MODE_NEAREST_POINTS;
-		currentModeStr = "3 - PARTICLE_MODE_NEAREST_POINTS: hold 'f' to disable force"; 						
-	}/*
-	if( key == '4'){
-		currentMode = PARTICLE_MODE_NOISE;
-		currentModeStr = "4 - PARTICLE_MODE_NOISE: snow particle simulation"; 						
-		resetParticles();
-	}*/
-		
+		currentModeStr = "3 - PARTICLE_MODE_NEAREST_POINTS: hold 'f' to disable force";
+	}
 	if( key == ' ' ){
 		resetParticles();
 	}
@@ -96,7 +92,10 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+    if( key == '2') {
+        currentMode = PARTICLE_MODE_NEAREST_POINTS;
+    }
+    
 }
 
 //--------------------------------------------------------------
